@@ -1,0 +1,221 @@
+/* ============================================================
+   Eterna Forma — Estilos
+   Estética: bem-estar maduro. Tons de verde-sálvia + creme
+   quente + terracota. Tipografia legível (público 40+).
+   ============================================================ */
+
+:root {
+  --bone:        #f5f0e6;
+  --bone-2:      #efe8da;
+  --card:        #fffdf8;
+  --ink:         #1f2a24;
+  --ink-soft:    #46514a;
+  --muted:       #74807a;
+  --line:        #e2dbcb;
+  --sage:        #3e5641;
+  --sage-deep:   #2c3e30;
+  --sage-soft:   #6f8a72;
+  --terra:       #c2683a;
+  --terra-deep:  #a9542b;
+  --gold:        #d8a23c;
+  --ok:          #3e7d54;
+  --warn:        #b5852a;
+  --radius:      14px;
+  --radius-lg:   22px;
+  --shadow:      0 1px 2px rgba(31,42,36,.06), 0 12px 30px -18px rgba(31,42,36,.35);
+  --shadow-lift: 0 2px 4px rgba(31,42,36,.08), 0 22px 50px -22px rgba(31,42,36,.45);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(111,138,114,.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, rgba(194,104,58,.12), transparent 55%),
+    var(--bone);
+  min-height: 100vh;
+}
+
+h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; line-height: 1.1; color: var(--ink); margin: 0 0 .4em; }
+h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.01em; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.2rem; }
+a  { color: var(--sage); text-decoration: none; }
+a:hover { text-decoration: underline; }
+p  { margin: 0 0 1rem; }
+
+/* -------- Layout -------- */
+.conteudo { max-width: 1080px; margin: 0 auto; padding: 2.4rem 1.25rem 4rem; }
+.conteudo--estreito { max-width: 540px; }
+
+/* -------- Topo / nav -------- */
+.topo {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(245,240,230,.82);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.topo__inner {
+  max-width: 1180px; margin: 0 auto; padding: .85rem 1.25rem;
+  display: flex; align-items: center; gap: 1.5rem;
+}
+.marca { display: flex; align-items: center; gap: .6rem; text-decoration: none; }
+.marca:hover { text-decoration: none; }
+.marca__sigla {
+  display: grid; place-items: center;
+  width: 38px; height: 38px; border-radius: 11px;
+  background: var(--sage); color: #f3efe4;
+  font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.05rem;
+}
+.marca__nome { font-family: 'Fraunces', serif; font-size: 1.25rem; color: var(--ink); }
+.marca__tag {
+  font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--terra-deep); background: rgba(194,104,58,.14);
+  padding: .2rem .5rem; border-radius: 999px; margin-left: .15rem;
+}
+.nav { display: flex; align-items: center; gap: 1.15rem; margin-left: auto; }
+.nav a:not(.btn) { color: var(--ink-soft); font-weight: 500; padding: .3rem 0; border-bottom: 2px solid transparent; text-decoration: none; }
+.nav a:not(.btn):hover { color: var(--sage); }
+.nav a.is-ativo { color: var(--sage); border-bottom-color: var(--terra); }
+.nav__user { display: flex; align-items: center; gap: .75rem; }
+.nav__ola { color: var(--muted); font-size: .92rem; }
+
+@media (max-width: 760px) {
+  .topo__inner { flex-wrap: wrap; gap: .75rem 1rem; }
+  .nav { width: 100%; margin-left: 0; flex-wrap: wrap; gap: .75rem 1rem; font-size: .95rem; }
+  .nav__user { margin-left: auto; }
+}
+
+/* -------- Botões -------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
+  font-family: inherit; font-weight: 600; font-size: 1rem; line-height: 1;
+  padding: .8rem 1.3rem; border-radius: 999px; cursor: pointer;
+  border: 1px solid transparent; background: var(--sage); color: #f4f0e6;
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+  text-decoration: none;
+}
+.btn:hover { background: var(--sage-deep); text-decoration: none; transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn--terra { background: var(--terra); }
+.btn--terra:hover { background: var(--terra-deep); }
+.btn--ghost { background: transparent; color: var(--sage); border-color: var(--sage-soft); }
+.btn--ghost:hover { background: rgba(62,86,65,.08); color: var(--sage-deep); }
+.btn--sm { padding: .55rem .95rem; font-size: .9rem; }
+.btn--block { width: 100%; }
+.btn:disabled { opacity: .55; cursor: default; transform: none; }
+
+/* -------- Cards -------- */
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow);
+  padding: 1.6rem;
+}
+.card + .card { margin-top: 1.25rem; }
+.grade { display: grid; gap: 1.25rem; }
+.grade--auto { grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
+.grade--2 { grid-template-columns: 1fr 1fr; }
+@media (max-width: 720px) { .grade--2 { grid-template-columns: 1fr; } }
+
+/* -------- Formulários -------- */
+.campo { margin-bottom: 1.05rem; }
+.campo label { display: block; font-weight: 600; font-size: .92rem; color: var(--ink-soft); margin-bottom: .35rem; }
+.campo input, .campo select, .campo textarea {
+  width: 100%; padding: .7rem .85rem; font: inherit; color: var(--ink);
+  background: #fff; border: 1px solid var(--line); border-radius: 10px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+  outline: none; border-color: var(--sage-soft);
+  box-shadow: 0 0 0 3px rgba(111,138,114,.25);
+}
+.campo textarea { resize: vertical; min-height: 90px; }
+.campo .ajuda { font-size: .82rem; color: var(--muted); margin-top: .3rem; }
+.linha-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 480px) { .linha-2 { grid-template-columns: 1fr; } }
+
+/* -------- Alertas -------- */
+.alerta { padding: .85rem 1rem; border-radius: 12px; margin-bottom: 1.2rem; font-size: .95rem; border: 1px solid; }
+.alerta--erro { background: #fbeeea; color: #8c3a1e; border-color: #eccabb; }
+.alerta--ok   { background: #e9f3ec; color: #1f5235; border-color: #c3e0cc; }
+
+/* -------- Hero (landing) -------- */
+.hero { text-align: center; padding: 3.5rem 0 1rem; }
+.hero .selo {
+  display: inline-block; font-size: .82rem; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--terra-deep);
+  background: rgba(194,104,58,.12); padding: .35rem .8rem; border-radius: 999px; margin-bottom: 1.2rem;
+}
+.hero p.sub { font-size: 1.15rem; color: var(--ink-soft); max-width: 620px; margin: .4rem auto 1.8rem; }
+.hero__acoes { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+
+/* pilares */
+.pilares { margin-top: 3rem; }
+.pilar h3 { display: flex; align-items: baseline; gap: .55rem; }
+.pilar .num { font-family: 'Fraunces', serif; color: var(--terra); font-size: 1.4rem; }
+
+/* -------- Perfil / match cards -------- */
+.perfil-card { display: flex; flex-direction: column; gap: .9rem; }
+.perfil-card__topo { display: flex; align-items: center; gap: .9rem; }
+.avatar {
+  width: 56px; height: 56px; border-radius: 50%; flex: 0 0 auto;
+  display: grid; place-items: center; color: #f4f0e6; font-family: 'Fraunces', serif;
+  font-size: 1.4rem; background: var(--sage-soft);
+}
+.perfil-card__nome { font-family: 'Fraunces', serif; font-size: 1.2rem; }
+.perfil-card__meta { color: var(--muted); font-size: .9rem; }
+.perfil-card__bio { color: var(--ink-soft); font-size: .95rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+.tag {
+  font-size: .8rem; font-weight: 600; color: var(--sage-deep);
+  background: rgba(111,138,114,.16); padding: .3rem .65rem; border-radius: 999px;
+}
+.tag--terra { color: var(--terra-deep); background: rgba(194,104,58,.14); }
+
+.compat {
+  display: flex; align-items: center; gap: .6rem; font-size: .9rem; color: var(--ink-soft);
+}
+.compat__barra { flex: 1; height: 8px; border-radius: 999px; background: var(--bone-2); overflow: hidden; }
+.compat__fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--sage-soft), var(--terra)); }
+.compat__num { font-family: 'Fraunces', serif; font-weight: 600; color: var(--sage-deep); }
+
+.acoes-card { display: flex; gap: .55rem; flex-wrap: wrap; margin-top: .3rem; }
+
+/* badges de status */
+.badge { display: inline-block; font-size: .78rem; font-weight: 600; padding: .25rem .6rem; border-radius: 999px; }
+.badge--pendente { background: rgba(216,162,60,.18); color: #8a6516; }
+.badge--aceito   { background: rgba(62,125,84,.16); color: #1f5235; }
+.badge--rejeitado{ background: rgba(140,58,30,.12); color: #8c3a1e; }
+
+/* -------- estado vazio -------- */
+.vazio { text-align: center; color: var(--muted); padding: 2.5rem 1rem; }
+.vazio h3 { color: var(--ink-soft); }
+
+/* -------- métricas dashboard -------- */
+.metricas { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+.metrica { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.1rem 1.2rem; }
+.metrica__num { font-family: 'Fraunces', serif; font-size: 2rem; color: var(--sage-deep); line-height: 1; }
+.metrica__rot { color: var(--muted); font-size: .9rem; margin-top: .35rem; }
+
+.section-titulo { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin: 2.2rem 0 1rem; }
+.section-titulo h2 { margin: 0; }
+
+/* -------- rodapé -------- */
+.rodape { border-top: 1px solid var(--line); background: rgba(239,232,218,.5); }
+.rodape__inner {
+  max-width: 1080px; margin: 0 auto; padding: 1.6rem 1.25rem;
+  display: flex; flex-direction: column; gap: .25rem; color: var(--muted); font-size: .88rem;
+}
+.rodape__sub { font-size: .82rem; }
+
+.center { text-align: center; }
+.mt-2 { margin-top: 1.5rem; }
+.muted { color: var(--muted); }
